@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Set the project name to your project name, my project isn't very descriptive
-project(myproject CXX)
+project(cpp_basic CXX)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
@@ -38,11 +38,11 @@ enable_doxygen()
 include(cmake/StaticAnalyzers.cmake)
 
 option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
-option(ENABLE_TESTING "Enable Test Builds" ON)
+option(ENABLE_TESTING "Enable Test Builds" OFF)
 option(ENABLE_FUZZING "Enable Fuzzing Builds" OFF)
 
 # Very basic PCH example
-option(ENABLE_PCH "Enable Precompiled Headers" OFF)
+option(ENABLE_PCH "Enable Precompiled Headers" ON)
 if(ENABLE_PCH)
   # This sets a global PCH parameter, each project will build its own PCH, which is a good idea if any #define's change
   #
@@ -71,9 +71,6 @@ if(CPP_STARTER_USE_SDL)
   set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} sdl2/2.0.10@bincrafters/stable)
   # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sdl2:wayland=True)
 endif()
-
-include(cmake/Conan.cmake)
-run_conan()
 
 if(ENABLE_TESTING)
   enable_testing()
