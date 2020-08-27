@@ -1,5 +1,5 @@
 ---
-Checks:          '*'
+Checks:          '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-llvm-*'
 WarningsAsErrors: '*'
 HeaderFilterRegex: ''
 FormatStyle:     none
